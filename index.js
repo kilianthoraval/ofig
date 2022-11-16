@@ -6,11 +6,24 @@ const express = require('express');
 // on importe le router
 const router = require('./app/router');
 
+
 // un peu de config
 const PORT = process.env.PORT || 5000;
 
 
 const app = express();
+
+const expressSession = require('express-session');
+app.use(expressSession({
+  resave: true,
+  saveUninitialized: true,
+  secret: "Guess it!",
+  cookie: {
+    secure: false,
+    maxAge: (1000*60*60) // ça fait une heure
+  }
+}));
+
 
 app.set('views', './app/views');
 app.set('view engine', 'ejs');

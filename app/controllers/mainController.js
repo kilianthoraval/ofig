@@ -31,6 +31,8 @@ const mainController = {
         res.status(500).render("500");
     }
 }
+
+
 };
 
 
